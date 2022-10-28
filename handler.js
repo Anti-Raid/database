@@ -41,23 +41,27 @@ for (const file of schemaFiles) {
 
 // Users
 class Users extends Model {
-    /**
+	/**
 	 * @param {String} userID
 	 * @param {Array} discordUser
-     * @param {Array} guilds
-     * @param {Array} notifications
-     * @param {Array} tokens
+	 * @param {Array} guilds
+	 * @param {Array} notifications
+	 * @param {Array} tokens
 	 */
-	static async createUser(userID, discordUser, guilds, notifications, tokens) {
-		const data = await Users.createUser(
-			{
-                id: userID,
-				discordUser: discordUser,
-                guilds: guilds,
-                notifications: notifications,
-                tokens: tokens,
-			}
-		);
+	static async createUser(
+		userID,
+		discordUser,
+		guilds,
+		notifications,
+		tokens
+	) {
+		const data = await Users.createUser({
+			id: userID,
+			discordUser: discordUser,
+			guilds: guilds,
+			notifications: notifications,
+			tokens: tokens,
+		});
 
 		Users.sync();
 
@@ -67,17 +71,23 @@ class Users extends Model {
 	/**
 	 * @param {String} userID
 	 * @param {Array} discordUser
-     * @param {Array} guilds
-     * @param {Array} notifications
-     * @param {Array} tokens
+	 * @param {Array} guilds
+	 * @param {Array} notifications
+	 * @param {Array} tokens
 	 */
-	static async updateUser(userID, discordUser, guilds, notifications, tokens) {
+	static async updateUser(
+		userID,
+		discordUser,
+		guilds,
+		notifications,
+		tokens
+	) {
 		const data = await Users.createUser(
 			{
 				discordUser: discordUser,
-                guilds: guilds,
-                notifications: notifications,
-                tokens: tokens,
+				guilds: guilds,
+				notifications: notifications,
+				tokens: tokens,
 			},
 			{
 				where: {
@@ -111,38 +121,35 @@ class Users extends Model {
 	}
 }
 
-
 // User
 class User extends Model {
-    /**
+	/**
 	 * @param {String} userID
-     * @param {String} bio
+	 * @param {String} bio
 	 */
 	static async createUser(userID, bio) {
-		const data = await User.createUser(
-			{
-                userID: userID,
-                bio: bio
-			}
-		);
+		const data = await User.createUser({
+			userID: userID,
+			bio: bio,
+		});
 
 		User.sync();
 
 		return data;
 	}
 
-    /**
+	/**
 	 * @param {String} userID
-     * @param {String} bio
+	 * @param {String} bio
 	 */
 	static async updateUser(userID, bio) {
 		const data = await User.createUser(
 			{
-				bio: bio
+				bio: bio,
 			},
 			{
 				where: {
-                    userID: userID,
+					userID: userID,
 				},
 			}
 		);
@@ -174,39 +181,37 @@ class User extends Model {
 
 // Tags
 class Tags extends Model {
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async createTag(GuildID, Command, Content) {
-		const data = await Tags.createUser(
-			{
-                GuildID: GuildID,
-                Command: Command,
-                Content: Content
-			}
-		);
+		const data = await Tags.createUser({
+			GuildID: GuildID,
+			Command: Command,
+			Content: Content,
+		});
 
 		Tags.sync();
 
 		return data;
 	}
 
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async updateTag(GuildID, Command, Content) {
 		const data = await Tags.createUser(
 			{
-                Content: Content
+				Content: Content,
 			},
 			{
 				where: {
-                    GuildID: GuildID,
-                    Command: Command
+					GuildID: GuildID,
+					Command: Command,
 				},
 			}
 		);
@@ -218,13 +223,13 @@ class Tags extends Model {
 
 	/**
 	 * @param {String} GuildID
-     * @param {String} Command
+	 * @param {String} Command
 	 */
 	static async deleteTag(GuildID, Command) {
 		const data = await Tags.destroy({
 			where: {
 				GuildID: GuildID,
-                Command: Command
+				Command: Command,
 			},
 		});
 
@@ -240,39 +245,37 @@ class Tags extends Model {
 
 // Guilds
 class Guilds extends Model {
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async createGuild(GuildID, Command, Content) {
-		const data = await Guilds.createUser(
-			{
-                GuildID: GuildID,
-                Command: Command,
-                Content: Content
-			}
-		);
+		const data = await Guilds.createUser({
+			GuildID: GuildID,
+			Command: Command,
+			Content: Content,
+		});
 
 		Guilds.sync();
 
 		return data;
 	}
 
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async updateGuild(GuildID, Command, Content) {
 		const data = await Guilds.createUser(
 			{
-                Content: Content
+				Content: Content,
 			},
 			{
 				where: {
-                    GuildID: GuildID,
-                    Command: Command
+					GuildID: GuildID,
+					Command: Command,
 				},
 			}
 		);
@@ -284,13 +287,13 @@ class Guilds extends Model {
 
 	/**
 	 * @param {String} GuildID
-     * @param {String} Command
+	 * @param {String} Command
 	 */
 	static async deleteGuild(GuildID, Command) {
 		const data = await Guilds.destroy({
 			where: {
 				GuildID: GuildID,
-                Command: Command
+				Command: Command,
 			},
 		});
 
@@ -306,39 +309,37 @@ class Guilds extends Model {
 
 // Cases
 class Cases extends Model {
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async createCase(GuildID, Command, Content) {
-		const data = await Cases.createUser(
-			{
-                GuildID: GuildID,
-                Command: Command,
-                Content: Content
-			}
-		);
+		const data = await Cases.createUser({
+			GuildID: GuildID,
+			Command: Command,
+			Content: Content,
+		});
 
 		Cases.sync();
 
 		return data;
 	}
 
-    /**
+	/**
 	 * @param {String} GuildID
-     * @param {String} Command
-     * @param {String} Content
+	 * @param {String} Command
+	 * @param {String} Content
 	 */
 	static async updateCase(GuildID, Command, Content) {
 		const data = await Cases.createUser(
 			{
-                Content: Content
+				Content: Content,
 			},
 			{
 				where: {
-                    GuildID: GuildID,
-                    Command: Command
+					GuildID: GuildID,
+					Command: Command,
 				},
 			}
 		);
@@ -350,13 +351,13 @@ class Cases extends Model {
 
 	/**
 	 * @param {String} GuildID
-     * @param {String} Command
+	 * @param {String} Command
 	 */
 	static async deleteCase(GuildID, Command) {
 		const data = await Cases.destroy({
 			where: {
 				GuildID: GuildID,
-                Command: Command
+				Command: Command,
 			},
 		});
 
@@ -377,22 +378,22 @@ const init = () => {
 		modelName: schemaData["users"].name,
 	});
 
-    User.init(schemaData["user"].schema, {
+	User.init(schemaData["user"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["user"].name,
 	});
 
-    Tags.init(schemaData["tags"].schema, {
+	Tags.init(schemaData["tags"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["tags"].name,
 	});
 
-    Guilds.init(schemaData["guilds"].schema, {
+	Guilds.init(schemaData["guilds"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["guilds"].name,
 	});
 
-    Cases.init(schemaData["cases"].schema, {
+	Cases.init(schemaData["cases"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["cases"].name,
 	});
@@ -403,8 +404,8 @@ init();
 // Expose Classes
 module.exports = {
 	Users,
-    User,
-    Tags,
-    Guilds,
-    Cases    
+	User,
+	Tags,
+	Guilds,
+	Cases,
 };

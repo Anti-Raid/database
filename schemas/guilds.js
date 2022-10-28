@@ -1,102 +1,101 @@
 const { DataTypes } = require("sequelize");
 
 const schema = {
-    guildID: {
-        type: DataTypes.STRING,
-    },
+	guildID: {
+		type: DataTypes.STRING,
+	},
 
-    infractions: {
-        type: DataTypes.JSON
-    },
+	infractions: {
+		type: DataTypes.JSON,
+	},
 
-    // Channels
+	// Channels
 	welcomeChannel: {
-        type: DataTypes.STRING
-    },
+		type: DataTypes.STRING,
+	},
 
-    leaveChannel: {
-        type: DataTypes.STRING
-    },
+	leaveChannel: {
+		type: DataTypes.STRING,
+	},
 
 	mod: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	audit: {
-        type: DataTypes.STRING 
-    },
+		type: DataTypes.STRING,
+	},
 
-    CanLockChannels: {
-        type: DataTypes.JSON
-    },
+	CanLockChannels: {
+		type: DataTypes.JSON,
+	},
 
 	// Roles
 	mutedrole: {
-        type: DataTypes.STRING,
-    },
-
+		type: DataTypes.STRING,
+	},
 
 	botautorole: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	autorole: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	// Important Settings
 	highestCaseId: {
-        type: DataTypes.NUMBER,
-    },
+		type: DataTypes.NUMBER,
+	},
 
 	// Auto-Mod Settings
 	antispam: {
-        type: DataTypes.NUMBER, // 0: no antispam, 1: basic, 2: moderate, 3: severe
-    },
+		type: DataTypes.NUMBER, // 0: no antispam, 1: basic, 2: moderate, 3: severe
+	},
 
 	moderateLinks: {
-        type: DataTypes.BOOLEAN,
-    },
+		type: DataTypes.BOOLEAN,
+	},
 
 	moderateProfanity: {
-        type: DataTypes.BOOLEAN,
-    },
+		type: DataTypes.BOOLEAN,
+	},
 
 	moderateWebhooks: {
-        type: DataTypes.BOOLEAN,
-    },
+		type: DataTypes.BOOLEAN,
+	},
 
 	warnsForKick: {
-        type: DataTypes.NUMBER,
-    },
+		type: DataTypes.NUMBER,
+	},
 
 	warnsForBan: {
-        type: DataTypes.NUMBER,
-    },
+		type: DataTypes.NUMBER,
+	},
 
 	warnsForMute: {
-        type: DataTypes.NUMBER,
-    },
+		type: DataTypes.NUMBER,
+	},
 
 	// Saved Messages
 	welcomeMsg: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	leaveMsg: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	EmbedsForJoinLeave: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 
 	AntiRaid: {
-        type: DataTypes.STRING,
-    },
+		type: DataTypes.STRING,
+	},
 };
 
 module.exports = {
-    name: "guilds",
-    schema: schema,
-}
+	name: "guilds",
+	schema: schema,
+};
