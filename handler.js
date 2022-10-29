@@ -249,71 +249,73 @@ class Guilds extends Model {
 	 * @param {String} guildID
 	 * @param {JSON} infractions
 	 * @param {String} welcomeChannel
-     * @param {String} leaveChannel
-     * @param {String} mod
-     * @param {String} audit
-     * @param {JSON} CanLockChannels
-     * @param {String} mutedrole
-     * @param {String} botautorole
-     * @param {String} autorole
-     * @param {Number} highestCaseId
-     * @param {Number} antispam
-     * @param {Boolean} moderateLinks
-     * @param {Boolean} moderateProfanity
-     * @param {Boolean} moderateWebhooks
-     * @param {Number} warnsForKick
-     * @param {Number} warnsForBan
-     * @param {Number} warnsForMute
-     * @param {String} welcomeMsg
-     * @param {String} leaveMsg
-     * @param {String} EmbedsForJoinLeave
-     * @param {String} AntiRaid
+	 * @param {String} leaveChannel
+	 * @param {String} mod
+	 * @param {String} audit
+	 * @param {JSON} CanLockChannels
+	 * @param {String} mutedrole
+	 * @param {String} botautorole
+	 * @param {String} autorole
+	 * @param {Number} highestCaseId
+	 * @param {Number} antispam
+	 * @param {Boolean} moderateLinks
+	 * @param {Boolean} moderateProfanity
+	 * @param {Boolean} moderateWebhooks
+	 * @param {Number} warnsForKick
+	 * @param {Number} warnsForBan
+	 * @param {Number} warnsForMute
+	 * @param {String} welcomeMsg
+	 * @param {String} leaveMsg
+	 * @param {String} EmbedsForJoinLeave
+	 * @param {String} AntiRaid
 	 */
-	static async createGuild(guildID,
-        infractions,
-        welcomeChannel,
-        leaveChannel,
-        mod,
-        audit,
-        CanLockChannels,
-        mutedrole, 
-        botautorole,
-        autorole,
-        highestCaseId,
-        antispam,
-        moderateLinks,
-        moderateProfanity,
-        moderateWebhooks,
-        warnsForKick,
-        warmsForBan,
-        warnsForMute,
-        welcomeMsg,
-        leaveMsg,
-        EmbedsForJoinLeave,
-        AntiRaid) {
+	static async createGuild(
+		guildID,
+		infractions,
+		welcomeChannel,
+		leaveChannel,
+		mod,
+		audit,
+		CanLockChannels,
+		mutedrole,
+		botautorole,
+		autorole,
+		highestCaseId,
+		antispam,
+		moderateLinks,
+		moderateProfanity,
+		moderateWebhooks,
+		warnsForKick,
+		warmsForBan,
+		warnsForMute,
+		welcomeMsg,
+		leaveMsg,
+		EmbedsForJoinLeave,
+		AntiRaid
+	) {
 		const data = await Guilds.createUser({
 			guildID,
-            infractions,
-            welcomeChannel,
-            leaveChannel,
-            mod,
-            audit,
-            CanLockChannels,
-            mutedrole, 
-            botautorole,
-            autorole,
-            highestCaseId,
-            antispam,
-            moderateLinks,
-            moderateProfanity,
-            moderateWebhooks,
-            warnsForKick,
-            warmsForBan,
-            warnsForMute,
-            welcomeMsg,
-            leaveMsg,
-            EmbedsForJoinLeave,
-            AntiRaid
+			infractions,
+			welcomeChannel,
+			leaveChannel,
+			mod,
+			audit,
+			CanLockChannels,
+			mutedrole,
+			botautorole,
+			autorole,
+			highestCaseId,
+			antispam,
+			moderateLinks,
+			moderateProfanity,
+			moderateWebhooks,
+			warnsForKick,
+			warmsForBan,
+			warnsForMute,
+			welcomeMsg,
+			leaveMsg,
+			EmbedsForJoinLeave,
+			AntiRaid,
 		});
 
 		Guilds.sync();
@@ -325,75 +327,77 @@ class Guilds extends Model {
 	 * @param {String} guildID
 	 * @param {JSON} infractions
 	 * @param {String} welcomeChannel
-     * @param {String} leaveChannel
-     * @param {String} mod
-     * @param {String} audit
-     * @param {JSON} CanLockChannels
-     * @param {String} mutedrole
-     * @param {String} botautorole
-     * @param {String} autorole
-     * @param {Number} highestCaseId
-     * @param {Number} antispam
-     * @param {Boolean} moderateLinks
-     * @param {Boolean} moderateProfanity
-     * @param {Boolean} moderateWebhooks
-     * @param {Number} warnsForKick
-     * @param {Number} warnsForBan
-     * @param {Number} warnsForMute
-     * @param {String} welcomeMsg
-     * @param {String} leaveMsg
-     * @param {String} EmbedsForJoinLeave
-     * @param {String} AntiRaid
+	 * @param {String} leaveChannel
+	 * @param {String} mod
+	 * @param {String} audit
+	 * @param {JSON} CanLockChannels
+	 * @param {String} mutedrole
+	 * @param {String} botautorole
+	 * @param {String} autorole
+	 * @param {Number} highestCaseId
+	 * @param {Number} antispam
+	 * @param {Boolean} moderateLinks
+	 * @param {Boolean} moderateProfanity
+	 * @param {Boolean} moderateWebhooks
+	 * @param {Number} warnsForKick
+	 * @param {Number} warnsForBan
+	 * @param {Number} warnsForMute
+	 * @param {String} welcomeMsg
+	 * @param {String} leaveMsg
+	 * @param {String} EmbedsForJoinLeave
+	 * @param {String} AntiRaid
 	 */
-	static async updateGuild(guildID,
-        infractions,
-        welcomeChannel,
-        leaveChannel,
-        mod,
-        audit,
-        CanLockChannels,
-        mutedrole, 
-        botautorole,
-        autorole,
-        highestCaseId,
-        antispam,
-        moderateLinks,
-        moderateProfanity,
-        moderateWebhooks,
-        warnsForKick,
-        warmsForBan,
-        warnsForMute,
-        welcomeMsg,
-        leaveMsg,
-        EmbedsForJoinLeave,
-        AntiRaid) {
+	static async updateGuild(
+		guildID,
+		infractions,
+		welcomeChannel,
+		leaveChannel,
+		mod,
+		audit,
+		CanLockChannels,
+		mutedrole,
+		botautorole,
+		autorole,
+		highestCaseId,
+		antispam,
+		moderateLinks,
+		moderateProfanity,
+		moderateWebhooks,
+		warnsForKick,
+		warmsForBan,
+		warnsForMute,
+		welcomeMsg,
+		leaveMsg,
+		EmbedsForJoinLeave,
+		AntiRaid
+	) {
 		const data = await Guilds.createUser(
 			{
-            infractions,
-            welcomeChannel,
-            leaveChannel,
-            mod,
-            audit,
-            CanLockChannels,
-            mutedrole, 
-            botautorole,
-            autorole,
-            highestCaseId,
-            antispam,
-            moderateLinks,
-            moderateProfanity,
-            moderateWebhooks,
-            warnsForKick,
-            warmsForBan,
-            warnsForMute,
-            welcomeMsg,
-            leaveMsg,
-            EmbedsForJoinLeave,
-            AntiRaid
+				infractions,
+				welcomeChannel,
+				leaveChannel,
+				mod,
+				audit,
+				CanLockChannels,
+				mutedrole,
+				botautorole,
+				autorole,
+				highestCaseId,
+				antispam,
+				moderateLinks,
+				moderateProfanity,
+				moderateWebhooks,
+				warnsForKick,
+				warmsForBan,
+				warnsForMute,
+				welcomeMsg,
+				leaveMsg,
+				EmbedsForJoinLeave,
+				AntiRaid,
 			},
 			{
 				where: {
-					guildID: guildID
+					guildID: guildID,
 				},
 			}
 		);
@@ -429,18 +433,18 @@ class Cases extends Model {
 	 * @param {String} caseId
 	 * @param {String} targetId
 	 * @param {String} reason
-     * @param {String} type
-     * @param {String} serverId
-     * @param {String} modId
+	 * @param {String} type
+	 * @param {String} serverId
+	 * @param {String} modId
 	 */
 	static async createCase(caseId, targetId, reason, type, serverId, modId) {
 		const data = await Cases.createUser({
 			caseId,
-            targetId,
-            reason,
-            type,
-            serverId,
-            modId
+			targetId,
+			reason,
+			type,
+			serverId,
+			modId,
 		});
 
 		Cases.sync();
@@ -452,14 +456,17 @@ class Cases extends Model {
 	 * @param {String} caseId
 	 * @param {String} targetId
 	 * @param {String} reason
-     * @param {String} type
-     * @param {String} serverId
-     * @param {String} modId
+	 * @param {String} type
+	 * @param {String} serverId
+	 * @param {String} modId
 	 */
 	static async updateCase(caseId, targetId, reason, type, serverId, modId) {
 		const data = await Cases.createUser(
 			{
-				targetId, reason, type, modId
+				targetId,
+				reason,
+				type,
+				modId,
 			},
 			{
 				where: {
@@ -476,7 +483,7 @@ class Cases extends Model {
 
 	/**
 	 * @param {String} caseId
-     * @param {String} serverId
+	 * @param {String} serverId
 	 */
 	static async deleteCase(caseId, serverId) {
 		const data = await Cases.destroy({
