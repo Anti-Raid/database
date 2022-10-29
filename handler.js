@@ -58,7 +58,7 @@ class Users extends Model {
 		notifications,
 		tokens
 	) {
-		const data = await Users.createUser({
+		const data = await Users.create({
 			id: userID,
 			discordUser: discordUser,
 			guilds: guilds,
@@ -85,7 +85,7 @@ class Users extends Model {
 		notifications,
 		tokens
 	) {
-		const data = await Users.createUser(
+		const data = await Users.update(
 			{
 				discordUser: discordUser,
 				guilds: guilds,
@@ -131,7 +131,7 @@ class User extends Model {
 	 * @param {String} bio
 	 */
 	static async createUser(userID, bio) {
-		const data = await User.createUser({
+		const data = await User.create({
 			userID: userID,
 			bio: bio,
 		});
@@ -146,7 +146,7 @@ class User extends Model {
 	 * @param {String} bio
 	 */
 	static async updateUser(userID, bio) {
-		const data = await User.createUser(
+		const data = await User.update(
 			{
 				bio: bio,
 			},
@@ -190,7 +190,7 @@ class Tags extends Model {
 	 * @param {String} Content
 	 */
 	static async createTag(GuildID, Command, Content) {
-		const data = await Tags.createUser({
+		const data = await Tags.create({
 			GuildID: GuildID,
 			Command: Command,
 			Content: Content,
@@ -207,7 +207,7 @@ class Tags extends Model {
 	 * @param {String} Content
 	 */
 	static async updateTag(GuildID, Command, Content) {
-		const data = await Tags.createUser(
+		const data = await Tags.update(
 			{
 				Content: Content,
 			},
@@ -296,7 +296,7 @@ class Guilds extends Model {
 		EmbedsForJoinLeave,
 		AntiRaid
 	) {
-		const data = await Guilds.createUser({
+		const data = await Guilds.create({
 			guildID,
 			infractions,
 			welcomeChannel,
@@ -374,7 +374,7 @@ class Guilds extends Model {
 		EmbedsForJoinLeave,
 		AntiRaid
 	) {
-		const data = await Guilds.createUser(
+		const data = await Guilds.update(
 			{
 				infractions,
 				welcomeChannel,
@@ -441,7 +441,7 @@ class Cases extends Model {
 	 * @param {String} modId
 	 */
 	static async createCase(caseId, targetId, reason, type, serverId, modId) {
-		const data = await Cases.createUser({
+		const data = await Cases.create({
 			caseId,
 			targetId,
 			reason,
@@ -464,7 +464,7 @@ class Cases extends Model {
 	 * @param {String} modId
 	 */
 	static async updateCase(caseId, targetId, reason, type, serverId, modId) {
-		const data = await Cases.createUser(
+		const data = await Cases.update(
 			{
 				targetId,
 				reason,
