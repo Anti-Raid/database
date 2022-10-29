@@ -246,15 +246,74 @@ class Tags extends Model {
 // Guilds
 class Guilds extends Model {
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
-	 * @param {String} Content
+	 * @param {String} guildID
+	 * @param {JSON} infractions
+	 * @param {String} welcomeChannel
+     * @param {String} leaveChannel
+     * @param {String} mod
+     * @param {String} audit
+     * @param {JSON} CanLockChannels
+     * @param {String} mutedrole
+     * @param {String} botautorole
+     * @param {String} autorole
+     * @param {Number} highestCaseId
+     * @param {Number} antispam
+     * @param {Boolean} moderateLinks
+     * @param {Boolean} moderateProfanity
+     * @param {Boolean} moderateWebhooks
+     * @param {Number} warnsForKick
+     * @param {Number} warnsForBan
+     * @param {Number} warnsForMute
+     * @param {String} welcomeMsg
+     * @param {String} leaveMsg
+     * @param {String} EmbedsForJoinLeave
+     * @param {String} AntiRaid
 	 */
-	static async createGuild(GuildID, Command, Content) {
+	static async createGuild(guildID,
+        infractions,
+        welcomeChannel,
+        leaveChannel,
+        mod,
+        audit,
+        CanLockChannels,
+        mutedrole, 
+        botautorole,
+        autorole,
+        highestCaseId,
+        antispam,
+        moderateLinks,
+        moderateProfanity,
+        moderateWebhooks,
+        warnsForKick,
+        warmsForBan,
+        warnsForMute,
+        welcomeMsg,
+        leaveMsg,
+        EmbedsForJoinLeave,
+        AntiRaid) {
 		const data = await Guilds.createUser({
-			GuildID: GuildID,
-			Command: Command,
-			Content: Content,
+			guildID,
+            infractions,
+            welcomeChannel,
+            leaveChannel,
+            mod,
+            audit,
+            CanLockChannels,
+            mutedrole, 
+            botautorole,
+            autorole,
+            highestCaseId,
+            antispam,
+            moderateLinks,
+            moderateProfanity,
+            moderateWebhooks,
+            warnsForKick,
+            warmsForBan,
+            warnsForMute,
+            welcomeMsg,
+            leaveMsg,
+            EmbedsForJoinLeave,
+            AntiRaid
 		});
 
 		Guilds.sync();
@@ -263,19 +322,78 @@ class Guilds extends Model {
 	}
 
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
-	 * @param {String} Content
+	 * @param {String} guildID
+	 * @param {JSON} infractions
+	 * @param {String} welcomeChannel
+     * @param {String} leaveChannel
+     * @param {String} mod
+     * @param {String} audit
+     * @param {JSON} CanLockChannels
+     * @param {String} mutedrole
+     * @param {String} botautorole
+     * @param {String} autorole
+     * @param {Number} highestCaseId
+     * @param {Number} antispam
+     * @param {Boolean} moderateLinks
+     * @param {Boolean} moderateProfanity
+     * @param {Boolean} moderateWebhooks
+     * @param {Number} warnsForKick
+     * @param {Number} warnsForBan
+     * @param {Number} warnsForMute
+     * @param {String} welcomeMsg
+     * @param {String} leaveMsg
+     * @param {String} EmbedsForJoinLeave
+     * @param {String} AntiRaid
 	 */
-	static async updateGuild(GuildID, Command, Content) {
+	static async updateGuild(guildID,
+        infractions,
+        welcomeChannel,
+        leaveChannel,
+        mod,
+        audit,
+        CanLockChannels,
+        mutedrole, 
+        botautorole,
+        autorole,
+        highestCaseId,
+        antispam,
+        moderateLinks,
+        moderateProfanity,
+        moderateWebhooks,
+        warnsForKick,
+        warmsForBan,
+        warnsForMute,
+        welcomeMsg,
+        leaveMsg,
+        EmbedsForJoinLeave,
+        AntiRaid) {
 		const data = await Guilds.createUser(
 			{
-				Content: Content,
+            infractions,
+            welcomeChannel,
+            leaveChannel,
+            mod,
+            audit,
+            CanLockChannels,
+            mutedrole, 
+            botautorole,
+            autorole,
+            highestCaseId,
+            antispam,
+            moderateLinks,
+            moderateProfanity,
+            moderateWebhooks,
+            warnsForKick,
+            warmsForBan,
+            warnsForMute,
+            welcomeMsg,
+            leaveMsg,
+            EmbedsForJoinLeave,
+            AntiRaid
 			},
 			{
 				where: {
-					GuildID: GuildID,
-					Command: Command,
+					guildID: guildID
 				},
 			}
 		);
@@ -286,14 +404,12 @@ class Guilds extends Model {
 	}
 
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
+	 * @param {String} guildID
 	 */
-	static async deleteGuild(GuildID, Command) {
+	static async deleteGuild(guildID) {
 		const data = await Guilds.destroy({
 			where: {
-				GuildID: GuildID,
-				Command: Command,
+				guildID: guildID,
 			},
 		});
 
@@ -310,15 +426,21 @@ class Guilds extends Model {
 // Cases
 class Cases extends Model {
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
-	 * @param {String} Content
+	 * @param {String} caseId
+	 * @param {String} targetId
+	 * @param {String} reason
+     * @param {String} type
+     * @param {String} serverId
+     * @param {String} modId
 	 */
-	static async createCase(GuildID, Command, Content) {
+	static async createCase(caseId, targetId, reason, type, serverId, modId) {
 		const data = await Cases.createUser({
-			GuildID: GuildID,
-			Command: Command,
-			Content: Content,
+			caseId,
+            targetId,
+            reason,
+            type,
+            serverId,
+            modId
 		});
 
 		Cases.sync();
@@ -327,19 +449,22 @@ class Cases extends Model {
 	}
 
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
-	 * @param {String} Content
+	 * @param {String} caseId
+	 * @param {String} targetId
+	 * @param {String} reason
+     * @param {String} type
+     * @param {String} serverId
+     * @param {String} modId
 	 */
-	static async updateCase(GuildID, Command, Content) {
+	static async updateCase(caseId, targetId, reason, type, serverId, modId) {
 		const data = await Cases.createUser(
 			{
-				Content: Content,
+				targetId, reason, type, modId
 			},
 			{
 				where: {
-					GuildID: GuildID,
-					Command: Command,
+					caseId: caseId,
+					serverId: serverId,
 				},
 			}
 		);
@@ -350,14 +475,14 @@ class Cases extends Model {
 	}
 
 	/**
-	 * @param {String} GuildID
-	 * @param {String} Command
+	 * @param {String} caseId
+     * @param {String} serverId
 	 */
-	static async deleteCase(GuildID, Command) {
+	static async deleteCase(caseId, serverId) {
 		const data = await Cases.destroy({
 			where: {
-				GuildID: GuildID,
-				Command: Command,
+				serverId: serverId,
+				caseId: caseId,
 			},
 		});
 
