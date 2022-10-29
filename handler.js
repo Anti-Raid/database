@@ -44,6 +44,19 @@ sequelize.sync();
 
 // Users
 class Users extends Model {
+    /**
+     * @param {String} userID
+     */
+    static async getUser(userID) {
+        const data = await Users.findOne({
+            where: {
+                userID: userID
+            }
+        });
+
+        return data;
+    }
+
 	/**
 	 * @param {String} userID
 	 * @param {JSON} discordUser
@@ -126,6 +139,19 @@ class Users extends Model {
 
 // User
 class User extends Model {
+    /**
+     * @param {String} userID
+     */
+     static async getUser(userID) {
+        const data = await User.findOne({
+            where: {
+                userID: userID
+            }
+        });
+
+        return data;
+    }
+
 	/**
 	 * @param {String} userID
 	 * @param {String} bio
@@ -184,6 +210,21 @@ class User extends Model {
 
 // Tags
 class Tags extends Model {
+    /**
+     * @param {String} GuildID
+     * @param {String} Command
+     */
+     static async getTag(GuildID, Command) {
+        const data = await Tags.findOne({
+            where: {
+                GuildID: GuildID,
+                Command: Command
+            }
+        });
+
+        return data;
+    }
+
 	/**
 	 * @param {String} GuildID
 	 * @param {String} Command
@@ -248,6 +289,19 @@ class Tags extends Model {
 
 // Guilds
 class Guilds extends Model {
+    /**
+     * @param {String} guildID
+     */
+     static async getGuild(guildID) {
+        const data = await Guilds.findOne({
+            where: {
+                guildID: guildID
+            }
+        });
+
+        return data;
+    }
+
 	/**
 	 * @param {String} guildID
 	 * @param {JSON} infractions
@@ -432,6 +486,21 @@ class Guilds extends Model {
 
 // Cases
 class Cases extends Model {
+    /**
+     * @param {String} serverId
+     * @param {String} caseId
+     */
+     static async getCase(serverId, caseId) {
+        const data = await Cases.findOne({
+            where: {
+                serverId: serverId,
+                caseId: caseId
+            }
+        });
+
+        return data;
+    }
+
 	/**
 	 * @param {String} caseId
 	 * @param {String} targetId
