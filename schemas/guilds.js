@@ -45,12 +45,12 @@ const schema = {
 
 	// Important Settings
 	highestCaseId: {
-		type: DataTypes.NUMBER,
+		type: DataTypes.STRING,
 	},
 
 	// Auto-Mod Settings
 	antispam: {
-		type: DataTypes.NUMBER, // 0: no antispam, 1: basic, 2: moderate, 3: severe
+		type: DataTypes.STRING, // 0: no antispam, 1: basic, 2: moderate, 3: severe
 	},
 
 	moderateLinks: {
@@ -66,15 +66,15 @@ const schema = {
 	},
 
 	warnsForKick: {
-		type: DataTypes.NUMBER,
+		type: DataTypes.STRING,
 	},
 
 	warnsForBan: {
-		type: DataTypes.NUMBER,
+		type: DataTypes.STRING,
 	},
 
 	warnsForMute: {
-		type: DataTypes.NUMBER,
+		type: DataTypes.STRING,
 	},
 
 	// Saved Messages
