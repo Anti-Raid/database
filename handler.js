@@ -39,6 +39,11 @@ for (const file of schemaFiles) {
 	schemas[schema.name] = sequelize.define(schema.name, schema.schema);
 }
 
+// Sync schemas
+sequelize.sync({
+    force: true
+});
+
 // Users
 class Users extends Model {
 	/**
