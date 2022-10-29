@@ -27,7 +27,7 @@ sequelize
 
 // Schemas
 const schemaFiles = fs
-	.readdirSync("./database/schema")
+	.readdirSync("./database/schemas")
 	.filter((file) => file.endsWith(".js"));
 const schemas = {};
 const schemaData = {};
@@ -40,18 +40,16 @@ for (const file of schemaFiles) {
 }
 
 // Sync schemas
-sequelize.sync({
-    force: true
-});
+sequelize.sync();
 
 // Users
 class Users extends Model {
 	/**
 	 * @param {String} userID
-	 * @param {Array} discordUser
-	 * @param {Array} guilds
-	 * @param {Array} notifications
-	 * @param {Array} tokens
+	 * @param {JSON} discordUser
+	 * @param {JSON} guilds
+	 * @param {JSON} notifications
+	 * @param {JSON} tokens
 	 */
 	static async createUser(
 		userID,
@@ -75,10 +73,10 @@ class Users extends Model {
 
 	/**
 	 * @param {String} userID
-	 * @param {Array} discordUser
-	 * @param {Array} guilds
-	 * @param {Array} notifications
-	 * @param {Array} tokens
+	 * @param {JSON} discordUser
+	 * @param {JSON} guilds
+	 * @param {JSON} notifications
+	 * @param {JSON} tokens
 	 */
 	static async updateUser(
 		userID,
@@ -261,14 +259,14 @@ class Guilds extends Model {
 	 * @param {String} mutedrole
 	 * @param {String} botautorole
 	 * @param {String} autorole
-	 * @param {Number} highestCaseId
-	 * @param {Number} antispam
+	 * @param {String} highestCaseId
+	 * @param {String} antispam
 	 * @param {Boolean} moderateLinks
 	 * @param {Boolean} moderateProfanity
 	 * @param {Boolean} moderateWebhooks
-	 * @param {Number} warnsForKick
-	 * @param {Number} warnsForBan
-	 * @param {Number} warnsForMute
+	 * @param {String} warnsForKick
+	 * @param {String} warnsForBan
+	 * @param {String} warnsForMute
 	 * @param {String} welcomeMsg
 	 * @param {String} leaveMsg
 	 * @param {String} EmbedsForJoinLeave
@@ -339,14 +337,14 @@ class Guilds extends Model {
 	 * @param {String} mutedrole
 	 * @param {String} botautorole
 	 * @param {String} autorole
-	 * @param {Number} highestCaseId
-	 * @param {Number} antispam
+	 * @param {String} highestCaseId
+	 * @param {String} antispam
 	 * @param {Boolean} moderateLinks
 	 * @param {Boolean} moderateProfanity
 	 * @param {Boolean} moderateWebhooks
-	 * @param {Number} warnsForKick
-	 * @param {Number} warnsForBan
-	 * @param {Number} warnsForMute
+	 * @param {String} warnsForKick
+	 * @param {String} warnsForBan
+	 * @param {String} warnsForMute
 	 * @param {String} welcomeMsg
 	 * @param {String} leaveMsg
 	 * @param {String} EmbedsForJoinLeave
