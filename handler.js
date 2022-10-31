@@ -538,7 +538,6 @@ init();
 // Expose Classes
 module.exports = {
 	Users,
-	User,
 	Tags,
 	Guilds,
 	Cases,
