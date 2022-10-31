@@ -137,77 +137,6 @@ class Users extends Model {
 	}
 }
 
-// User
-class User extends Model {
-	/**
-	 * @param {String} userID
-	 */
-	static async getUser(userID) {
-		const data = await User.findOne({
-			where: {
-				userID: userID,
-			},
-		});
-
-		return data;
-	}
-
-	/**
-	 * @param {String} userID
-	 * @param {String} bio
-	 */
-	static async createUser(userID, bio) {
-		const data = await User.create({
-			userID: userID,
-			bio: bio,
-		});
-
-		User.sync();
-
-		return data;
-	}
-
-	/**
-	 * @param {String} userID
-	 * @param {String} bio
-	 */
-	static async updateUser(userID, bio) {
-		const data = await User.update(
-			{
-				bio: bio,
-			},
-			{
-				where: {
-					userID: userID,
-				},
-			}
-		);
-
-		User.sync();
-
-		return data;
-	}
-
-	/**
-	 * @param {String} userID
-	 */
-	static async deleteUser(userID) {
-		const data = await User.destroy({
-			where: {
-				userID: userID,
-			},
-		});
-
-		User.sync();
-
-		return data;
-	}
-
-	static async listAll() {
-		return await User.findAll();
-	}
-}
-
 // Tags
 class Tags extends Model {
 	/**
@@ -580,11 +509,6 @@ const init = () => {
 	Users.init(schemaData["users"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["users"].name,
-	});
-
-	User.init(schemaData["user"].schema, {
-		sequelize: sequelize,
-		modelName: schemaData["user"].name,
 	});
 
 	Tags.init(schemaData["tags"].schema, {
