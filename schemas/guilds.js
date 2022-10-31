@@ -3,10 +3,12 @@ const { DataTypes } = require("sequelize");
 const schema = {
 	guildID: {
 		type: DataTypes.STRING,
+        primaryKey: true
 	},
 
 	infractions: {
 		type: DataTypes.JSON,
+        defaultValue: []
 	},
 
 	// Channels
@@ -28,6 +30,7 @@ const schema = {
 
 	CanLockChannels: {
 		type: DataTypes.JSON,
+        defaultValue: []
 	},
 
 	// Roles
@@ -55,14 +58,17 @@ const schema = {
 
 	moderateLinks: {
 		type: DataTypes.BOOLEAN,
+        defaultValue: false,
 	},
 
 	moderateProfanity: {
 		type: DataTypes.BOOLEAN,
+        defaultValue: false
 	},
 
 	moderateWebhooks: {
 		type: DataTypes.BOOLEAN,
+        defaultValue: false
 	},
 
 	warnsForKick: {
