@@ -26,10 +26,10 @@ const schema = {
 		defaultValue: [],
 	},
 
-    staff_applications: {
-        type: DataTypes.JSON,
-        defaultValue: [],
-    }
+	staff_applications: {
+		type: DataTypes.JSON,
+		defaultValue: [],
+	},
 };
 
 module.exports = {
