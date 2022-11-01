@@ -53,17 +53,17 @@ class Users extends Model {
 				id: userID,
 			},
 		});
-		
+
 		return data;
 	}
-	
+
 	/**
-	* @param {String} token
-	*/
+	 * @param {String} token
+	 */
 	static async getUserWithToken(token) {
 		const allUsers = await Users.findAll();
 		let data;
-		
+
 		allUsers.forEach(async (user) => {
 			const i = user.tokens.filter((o) => o.token === token);
 
@@ -80,10 +80,10 @@ class Users extends Model {
 				resultFound = true;
 			}
 		});
-		
+
 		return data;
 	}
-	
+
 	/**
 	 * @param {String} userID
 	 * @param {JSON} discordUser
