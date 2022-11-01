@@ -73,7 +73,7 @@ class Users extends Model {
 			if (i[0]) {
 				data = await Users.findOne({
 					where: {
-						id: i[0].id,
+						id: user.id,
 					},
 				});
 
