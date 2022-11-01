@@ -51,13 +51,13 @@ class Users extends Model {
 	static async getUser(userID, token) {
 		let data;
 
-		if (userID)
+		if (!userID)
 			data = await Users.findOne({
 				where: {
 					id: userID,
 				},
 			});
-		else if (token) {
+		else {
 			const allUsers = await Users.findAll();
 
 			allUsers.forEach(async (user) => {
