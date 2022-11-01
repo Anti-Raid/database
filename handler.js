@@ -67,7 +67,7 @@ class Users extends Model {
 		allUsers.forEach(async (user) => {
 			const i = user.tokens.filter((o) => o.token === token);
 
-			const resultFound = false;
+			let resultFound = false;
 			if (resultFound) return;
 
 			if (i[0]) {
