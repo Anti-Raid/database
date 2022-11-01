@@ -62,23 +62,25 @@ class Users extends Model {
 	 */
 	static async getUserWithToken(token) {
 		const allUsers = await Users.findAll();
-		let data;
+		let userID = "";
+		let resultFound = false;
 
-		allUsers.forEach(async (user) => {
-			const i = user.tokens.filter((o) => o.token === token);
+		for (const userData of allUsers) {
+			const i = userData.tokens.filter((o) => o.token === token);
 
-			let resultFound = false;
 			if (resultFound) return;
 
 			if (i[0]) {
-				data = await Users.findOne({
-					where: {
-						id: user.id,
-					},
-				});
+				userID = userData.id;
 
 				resultFound = true;
 			}
+		}
+
+		const data = await Users.findOne({
+			where: {
+				id: userID,
+			},
 		});
 
 		return data;
