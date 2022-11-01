@@ -46,13 +46,37 @@ sequelize.sync();
 class Users extends Model {
 	/**
 	 * @param {String} userID
+	 * @param {String} token
 	 */
-	static async getUser(userID) {
-		const data = await Users.findOne({
-			where: {
-				userID: userID,
-			},
-		});
+	static async getUser(userID, token) {
+		let data;
+
+		if (userID)
+			data = await Users.findOne({
+				where: {
+					id: userID,
+				},
+			});
+		else if (token) {
+			const allUsers = await Users.findAll();
+
+			allUsers.forEach(async (user) => {
+				const i = user.tokens.filter((o) => o.token === token);
+
+				const resultFound = false;
+				if (resultFound) return;
+
+				if (i[0]) {
+					data = await Users.findOne({
+						where: {
+							id: i[0].userID,
+						},
+					});
+
+					resultFound = true;
+				}
+			});
+		}
 
 		return data;
 	}
