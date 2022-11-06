@@ -58,40 +58,10 @@ class Users extends Model {
 	}
 
 	/**
-	 * @param {String} token
-	 */
-	static async getUserWithToken(token) {
-		const allUsers = await Users.findAll();
-		let userID = "";
-		let resultFound = false;
-
-		for (const userData of allUsers) {
-			const i = userData.tokens.filter((o) => o.token === token);
-
-			if (resultFound) return;
-
-			if (i[0]) {
-				userID = userData.id;
-
-				resultFound = true;
-			}
-		}
-
-		const data = await Users.findOne({
-			where: {
-				id: userID,
-			},
-		});
-
-		return data;
-	}
-
-	/**
 	 * @param {String} userID
 	 * @param {JSON} discordUser
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
-	 * @param {JSON} tokens
 	 * @param {JSON} staff_applications
 	 */
 	static async createUser(
@@ -99,7 +69,6 @@ class Users extends Model {
 		discordUser,
 		guilds,
 		notifications,
-		tokens,
 		staff_applications = []
 	) {
 		const data = await Users.create({
@@ -107,7 +76,6 @@ class Users extends Model {
 			discordUser: discordUser,
 			guilds: guilds,
 			notifications: notifications,
-			tokens: tokens,
 			staff_applications: staff_applications,
 		});
 
@@ -121,7 +89,6 @@ class Users extends Model {
 	 * @param {JSON} discordUser
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
-	 * @param {JSON} tokens
 	 * @param {JSON} staff_applications
 	 */
 	static async updateUser(
@@ -129,7 +96,6 @@ class Users extends Model {
 		discordUser,
 		guilds,
 		notifications,
-		tokens,
 		staff_applications
 	) {
 		const data = await Users.update(
@@ -137,7 +103,6 @@ class Users extends Model {
 				discordUser: discordUser,
 				guilds: guilds,
 				notifications: notifications,
-				tokens: tokens,
 				staff_applications: staff_applications,
 			},
 			{
@@ -169,6 +134,50 @@ class Users extends Model {
 
 	static async listAll() {
 		return await Users.findAll();
+	}
+}
+
+// Authentication Tokens
+class Tokens extends Model {
+	/**
+	 * @param {String} token
+	 * @param {String} userID
+	 * @param {String} date
+	 */
+	static async add(token, userID, date) {
+		const data = await Tokens.create({
+			token: token,
+			userID: userID,
+			date: date,
+		});
+
+		Tokens.sync();
+
+		return data;
+	}
+
+	/**
+	 * @param {String} token
+	 */
+	static async getToken(token) {
+		const data = await Tokens.findOne({
+			where: {
+				token: token,
+			},
+		});
+
+		return data;
+	}
+
+	/**
+	 * @param {String} userID
+	 */
+	static async listUserTokens(userID) {
+		return await Tokens.findAll({
+			where: {
+				userID: userID,
+			},
+		});
 	}
 }
 
@@ -546,6 +555,11 @@ const init = () => {
 		modelName: schemaData["users"].name,
 	});
 
+	Tokens.init(schemaData["tokens"].schema, {
+		sequelize: sequelize,
+		modelName: schemaData["tokens"].name,
+	});
+
 	Tags.init(schemaData["tags"].schema, {
 		sequelize: sequelize,
 		modelName: schemaData["tags"].name,
@@ -567,6 +581,7 @@ init();
 // Expose Classes
 module.exports = {
 	Users,
+	Tokens,
 	Tags,
 	Guilds,
 	Cases,
