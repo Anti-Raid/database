@@ -548,6 +548,9 @@ class Cases extends Model {
 	}
 }
 
+// Blog
+class Blog extends Model {}
+
 // Initalize Schemas
 const init = () => {
 	Users.init(schemaData["users"].schema, {
@@ -574,6 +577,11 @@ const init = () => {
 		sequelize: sequelize,
 		modelName: schemaData["cases"].name,
 	});
+
+        Blog.init(schemaData["blog"].schema, {
+                sequelize: sequelize,
+                modelName: schemaData["blog"].name,
+        });
 };
 
 init();
@@ -585,4 +593,5 @@ module.exports = {
 	Tags,
 	Guilds,
 	Cases,
+        Blog
 };
