@@ -12,6 +12,10 @@ const schema = {
 	Markdown: {
 		type: DataTypes.TEXT,
 	},
+
+        UUID: {
+                type: DataTypes.STRING,
+        },
 };
 
 module.exports = {
