@@ -549,7 +549,81 @@ class Cases extends Model {
 }
 
 // Blog
-class Blog extends Model {}
+class Blog extends Model {
+/**
+	 * @param {String} Identifier
+	 */
+	static async getPost(Identifier) {
+		const data = await Blog.findOne({
+			where: {
+				Identifier: Identifier
+			},
+		});
+
+		return data;
+	}
+
+	/**
+	 * @param {String} Title
+	 * @param {String} Description
+	 * @param {String} Markdown
+	 */
+	static async createPost(Title, Description, Markdown) {
+		const data = await Blog.create({
+			Title: Title,
+                        Description: Description,
+                        Markdown: Markdown
+		});
+
+		Blog.sync();
+
+		return data;
+	}
+
+	/**
+	 * @param {String} Title
+	 * @param {String} Description
+	 * @param {String} Markdown
+         * @param {String} Identifier
+	 */
+	static async updatePost(Title, Description, Markdown, Identifier) {
+		const data = await Blog.update(
+			{
+				Title: Title,
+                                Description: Description,
+                                Markdown: Markdown
+			},
+			{
+				where: {
+					Identifier: Identifier
+				},
+			}
+		);
+
+		Blog.sync();
+
+		return data;
+	}
+
+	/**
+	 * @param {String} Identifier
+	 */
+	static async deletePost(Identifier) {
+		const data = await Blog.destroy({
+			where: {
+				Identifier: Identifier
+			},
+		});
+
+		Blog.sync();
+
+		return data;
+	}
+
+	static async listAllPosts() {
+		return await Blog.findAll();
+	}
+}
 
 // Initalize Schemas
 const init = () => {
