@@ -13,7 +13,7 @@ const schema = {
 		type: DataTypes.TEXT,
 	},
 
-        UUID: {
+        Identifier: {
                 type: DataTypes.STRING,
         },
 };
