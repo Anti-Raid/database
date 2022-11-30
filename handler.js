@@ -548,15 +548,95 @@ class Cases extends Model {
 	}
 }
 
+// Votes
+class Votes extends Model {
+	/**
+	 * @param {String} Identifier
+	 */
+	static async get(Identifier) {
+		const data = await Votes.findAll({
+			where: {
+				Identifier: Identifier,
+			},
+		});
+
+		return data;
+	}
+
+	/**
+	 * @param {String} UserID
+	 */
+	static async getAllFromUser(UserID) {
+		const data = await Votes.findAll({
+			where: {
+				UserID: UserID,
+			},
+		});
+
+		return data;
+	}
+
+	/**
+	 * @param {String} UserID
+	 * @param {String} Identifier
+	 * @param {String} Service
+	 * @param {Date} VoteTime
+	 * @param {Date} ExpiryDate
+	 */
+	static async add(UserID, Identifier, Service, VoteTime, ExpiryDate) {
+		const data = await Votes.create({
+			UserID,
+			Identifier,
+			Service,
+			VoteTime,
+			ExpiryDate,
+		});
+
+		Votes.sync();
+
+		return data;
+	}
+
+	/**
+	 * @param {String} Identifier
+	 */
+	static async delete(Identifier) {
+		const data = await Votes.destroy({
+			where: {
+				Identifier: Identifier,
+			},
+		});
+
+		Votes.sync();
+
+		return data;
+	}
+
+	/**
+	 * @param {String} UserID
+	 */
+	static async DeleteAllFromUser(UserID) {
+		const data = await Votes.destroy({
+			where: {
+				UserID: UserID,
+			},
+		});
+
+		Votes.sync();
+
+		return data;
+	}
+}
+
 // Blog
 class Blog extends Model {
-/**
+	/**
 	 * @param {String} Identifier
 	 */
 	static async getPost(Identifier) {
 		const data = await Blog.findOne({
 			where: {
-				Identifier: Identifier
+				Identifier: Identifier,
 			},
 		});
 
@@ -571,8 +651,8 @@ class Blog extends Model {
 	static async createPost(Title, Description, Markdown) {
 		const data = await Blog.create({
 			Title: Title,
-                        Description: Description,
-                        Markdown: Markdown
+			Description: Description,
+			Markdown: Markdown,
 		});
 
 		Blog.sync();
@@ -584,18 +664,18 @@ class Blog extends Model {
 	 * @param {String} Title
 	 * @param {String} Description
 	 * @param {String} Markdown
-         * @param {String} Identifier
+	 * @param {String} Identifier
 	 */
 	static async updatePost(Title, Description, Markdown, Identifier) {
 		const data = await Blog.update(
 			{
 				Title: Title,
-                                Description: Description,
-                                Markdown: Markdown
+				Description: Description,
+				Markdown: Markdown,
 			},
 			{
 				where: {
-					Identifier: Identifier
+					Identifier: Identifier,
 				},
 			}
 		);
@@ -611,7 +691,7 @@ class Blog extends Model {
 	static async deletePost(Identifier) {
 		const data = await Blog.destroy({
 			where: {
-				Identifier: Identifier
+				Identifier: Identifier,
 			},
 		});
 
@@ -652,10 +732,15 @@ const init = () => {
 		modelName: schemaData["cases"].name,
 	});
 
-        Blog.init(schemaData["blog"].schema, {
-                sequelize: sequelize,
-                modelName: schemaData["blog"].name,
-        });
+	Votes.init(schemaData["votes"].schema, {
+		sequelize: sequelize,
+		modelName: schemaData["votes"].name,
+	});
+
+	Blog.init(schemaData["blog"].schema, {
+		sequelize: sequelize,
+		modelName: schemaData["blog"].name,
+	});
 };
 
 init();
@@ -667,5 +752,6 @@ module.exports = {
 	Tags,
 	Guilds,
 	Cases,
-        Blog
+	Votes,
+	Blog,
 };
