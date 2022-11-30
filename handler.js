@@ -647,14 +647,14 @@ class Blog extends Model {
 	 * @param {String} Title
 	 * @param {String} Description
 	 * @param {String} Markdown
-     * @param {JSON} Author
+	 * @param {JSON} Author
 	 */
 	static async createPost(Title, Description, Markdown, Author) {
 		const data = await Blog.create({
 			Title: Title,
 			Description: Description,
 			Markdown: Markdown,
-            Author: Author,
+			Author: Author,
 		});
 
 		Blog.sync();
@@ -666,7 +666,7 @@ class Blog extends Model {
 	 * @param {String} Title
 	 * @param {String} Description
 	 * @param {String} Markdown
-     * @param {JSON} Author
+	 * @param {JSON} Author
 	 * @param {String} Identifier
 	 */
 	static async updatePost(Title, Description, Markdown, Author, Identifier) {
@@ -675,7 +675,7 @@ class Blog extends Model {
 				Title: Title,
 				Description: Description,
 				Markdown: Markdown,
-                Author: Author,
+				Author: Author,
 			},
 			{
 				where: {
