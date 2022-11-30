@@ -16,6 +16,10 @@ const schema = {
 	Identifier: {
 		type: DataTypes.STRING,
 	},
+
+    Author: {
+        type: DataTypes.JSON,
+    }
 };
 
 module.exports = {
