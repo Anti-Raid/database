@@ -13,9 +13,9 @@ const schema = {
 		type: DataTypes.TEXT,
 	},
 
-        Identifier: {
-                type: DataTypes.STRING,
-        },
+	Identifier: {
+		type: DataTypes.STRING,
+	},
 };
 
 module.exports = {
