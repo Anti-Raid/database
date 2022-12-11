@@ -25,6 +25,11 @@ const schema = {
 		type: DataTypes.JSON,
 		defaultValue: [],
 	},
+
+    roles: {
+        type: DataTypes.JSON,
+        defaultValue: [],
+    },
 };
 
 module.exports = {

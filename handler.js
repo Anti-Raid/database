@@ -63,13 +63,15 @@ class Users extends Model {
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
 	 * @param {JSON} staff_applications
+     * @param {JSON} roles
 	 */
 	static async createUser(
 		userID,
 		discordUser,
 		guilds,
 		notifications,
-		staff_applications = []
+		staff_applications = [],
+        roles = []
 	) {
 		const data = await Users.create({
 			id: userID,
@@ -77,6 +79,7 @@ class Users extends Model {
 			guilds: guilds,
 			notifications: notifications,
 			staff_applications: staff_applications,
+            roles: roles
 		});
 
 		Users.sync();
@@ -90,13 +93,15 @@ class Users extends Model {
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
 	 * @param {JSON} staff_applications
+     * @param {JSON} roles
 	 */
 	static async updateUser(
 		userID,
 		discordUser,
 		guilds,
 		notifications,
-		staff_applications
+		staff_applications,
+        roles
 	) {
 		const data = await Users.update(
 			{
@@ -104,6 +109,7 @@ class Users extends Model {
 				guilds: guilds,
 				notifications: notifications,
 				staff_applications: staff_applications,
+                roles: roles
 			},
 			{
 				where: {
