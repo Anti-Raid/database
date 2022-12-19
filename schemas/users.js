@@ -30,6 +30,10 @@ const schema = {
         type: DataTypes.JSON,
         defaultValue: [],
     },
+
+    twoFactorSecret: {
+        type: DataTypes.STRING,
+    },
 };
 
 module.exports = {
