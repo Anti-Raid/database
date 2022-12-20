@@ -63,7 +63,7 @@ class Users extends Model {
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
 	 * @param {JSON} staff_applications
-         * @param {JSON} roles
+	 * @param {JSON} roles
 	 */
 	static async createUser(
 		userID,
@@ -71,7 +71,7 @@ class Users extends Model {
 		guilds,
 		notifications,
 		staff_applications = [],
-        roles = []
+		roles = []
 	) {
 		const data = await Users.create({
 			id: userID,
@@ -79,8 +79,8 @@ class Users extends Model {
 			guilds: guilds,
 			notifications: notifications,
 			staff_applications: staff_applications,
-            roles: roles,
-twoFactorSecret: null
+			roles: roles,
+			twoFactorSecret: null,
 		});
 
 		Users.sync();
@@ -94,8 +94,8 @@ twoFactorSecret: null
 	 * @param {JSON} guilds
 	 * @param {JSON} notifications
 	 * @param {JSON} staff_applications
-     * @param {JSON} roles
-     * @param {String} twoFactorSecret
+	 * @param {JSON} roles
+	 * @param {String} twoFactorSecret
 	 */
 	static async updateUser(
 		userID,
@@ -103,8 +103,8 @@ twoFactorSecret: null
 		guilds,
 		notifications,
 		staff_applications,
-        roles,
-twoFactorSecret
+		roles,
+		twoFactorSecret
 	) {
 		const data = await Users.update(
 			{
@@ -112,8 +112,8 @@ twoFactorSecret
 				guilds: guilds,
 				notifications: notifications,
 				staff_applications: staff_applications,
-                roles: roles,
-twoFactorSecret: twoFactorSecret
+				roles: roles,
+				twoFactorSecret: twoFactorSecret,
 			},
 			{
 				where: {

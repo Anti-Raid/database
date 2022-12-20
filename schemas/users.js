@@ -26,14 +26,14 @@ const schema = {
 		defaultValue: [],
 	},
 
-    roles: {
-        type: DataTypes.JSON,
-        defaultValue: [],
-    },
+	roles: {
+		type: DataTypes.JSON,
+		defaultValue: [],
+	},
 
-    twoFactorSecret: {
-        type: DataTypes.STRING,
-    },
+	twoFactorSecret: {
+		type: DataTypes.STRING,
+	},
 };
 
 module.exports = {
