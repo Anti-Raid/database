@@ -9,7 +9,7 @@ require("dotenv").config();
 const sequelize = new Sequelize({
 	dialect: "postgres",
 	host: process.env.PGHOST,
-	username: "root",
+	username: "antiraid",
 	database: "antiraid",
 	password: "antiraid",
 	port: 5432,
