@@ -10,7 +10,7 @@ const sequelize = new Sequelize({
 	dialect: "postgres",
 	host: process.env.PGHOST,
 	username: "antiraid",
-	database: "antiraid",
+	database: "old-ar",
 	password: "antiraid",
 	port: 5432,
 	logging: (data) => {
